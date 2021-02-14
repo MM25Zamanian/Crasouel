@@ -81,6 +81,7 @@
             const al = m.querySelector(".Crasouel__arrow__left");
             const t = m.querySelector(".Crasouel__tracks");
             const i = m.querySelectorAll(".Crasouel__item");
+            const as = m.getAttribute("data-crasouel-autoplay");
             let msn = Number(m.getAttribute("data-crasouel-slide"));
             let ig = Number(m.getAttribute("data-crasouel-grouping"));
             if (ig == 0) {
@@ -98,6 +99,8 @@
                     msn = msn + 1;
                     m.setAttribute("data-crasouel-slide", msn);
                     t.style.transform = "translateX(-" + Number((100 / i.length) * (msn - 1)) + "%)";
+                } else {
+                    return false
                 }
             }
 
@@ -106,7 +109,25 @@
                     msn = msn - 1;
                     m.setAttribute("data-crasouel-slide", msn);
                     t.style.transform = "translateX(-" + Number((100 / i.length) * (msn - 1)) + "%)";
+                } else {
+                    return false
                 }
+            }
+            if (as != null && Boolean(as) == true) {
+                let rot = true;
+                setInterval(() => {
+                    if (rot == true) {
+                        let ne = next();
+                        if (ne == false) {
+                            rot = false;
+                        }
+                    } else if (rot == false) {
+                        let ne = perv();
+                        if (ne == false) {
+                            rot = true;
+                        }
+                    }
+                }, 3000);
             }
         });
     }
