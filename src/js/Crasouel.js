@@ -10,16 +10,16 @@
             const xxl = m.getAttribute("data-crasouel-xxl-grouping");
 
             function Sizing() {
-                const windowsize = screen.width;
-                if (windowsize > 1200) {
+                const mainwidth = m.getBoundingClientRect().width;
+                if (mainwidth > 1200) {
                     x(xxl);
-                } else if (windowsize <= 1200 && windowsize > 992) {
+                } else if (mainwidth <= 1200 && mainwidth > 992) {
                     x(xl);
-                } else if (windowsize <= 992 && windowsize > 768) {
+                } else if (mainwidth <= 992 && mainwidth > 768) {
                     x(lg);
-                } else if (windowsize <= 768 && windowsize > 567) {
+                } else if (mainwidth <= 768 && mainwidth > 567) {
                     x(md);
-                } else if (windowsize <= 567) {
+                } else if (mainwidth <= 567) {
                     x(sm);
                 } else {
                     x(1);
